@@ -19,7 +19,7 @@ public final class SRTConnection: NSObject {
     @objc public private(set) dynamic var connected = false
 
     var mode: SRTMode = .caller
-    var socket: SRTSocket<SRTConnection>? {
+    public var socket: SRTSocket<SRTConnection>? {
         didSet {
             socket?.delegate = self
         }

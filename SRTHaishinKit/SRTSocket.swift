@@ -121,7 +121,7 @@ final class SRTSocket<T: SRTSocketDelegate> {
         stopRunning()
     }
 
-    func doOutput(data: Data) {
+    public func doOutput(data: Data) {
         outgoingQueue.async {
             self.outgoingBuffer.append(contentsOf: data.chunk(kSRTSOcket_payloadSize))
             repeat {

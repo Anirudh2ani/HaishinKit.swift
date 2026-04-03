@@ -309,7 +309,7 @@ open class IOStream: NSObject {
         }
     }
 
-    private(set) lazy var mixer = {
+    public private(set) lazy var mixer = {
         let mixer = IOMixer()
         mixer.delegate = self
         return mixer

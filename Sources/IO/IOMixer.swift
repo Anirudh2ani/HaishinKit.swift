@@ -31,7 +31,7 @@ public final class IOMixer {
 
     weak var delegate: (any IOMixerDelegate)?
 
-    private(set) var isRunning: Atomic<Bool> = .init(false)
+    public private(set) var isRunning: Atomic<Bool> = .init(false)
 
     private(set) lazy var audioIO = {
         var audioIO = IOAudioUnit()
@@ -76,7 +76,7 @@ public final class IOMixer {
 
 extension IOMixer: Running {
     // MARK: Running
-    func startRunning() {
+    public func startRunning() {
         guard !isRunning.value else {
             return
         }
@@ -86,7 +86,7 @@ extension IOMixer: Running {
         isRunning.mutate { $0 = true }
     }
 
-    func stopRunning() {
+    public func stopRunning() {
         guard isRunning.value else {
             return
         }

@@ -24,7 +24,7 @@ protocol IOMixerDelegate: AnyObject {
 }
 
 /// An object that mixies audio and video for streaming.
-final class IOMixer {
+public final class IOMixer {
     static let defaultFrameRate: Float64 = 30
 
     public weak var muxer: (any IOMuxer)?

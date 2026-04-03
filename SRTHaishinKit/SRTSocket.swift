@@ -5,13 +5,13 @@ import Logboard
 
 private let kSRTSOcket_payloadSize: Int = 1316
 
-protocol SRTSocketDelegate: AnyObject {
+public protocol SRTSocketDelegate: AnyObject {
     func socket(_ socket: SRTSocket<Self>, status: SRT_SOCKSTATUS)
     func socket(_ socket: SRTSocket<Self>, incomingDataAvailabled data: Data, bytes: Int32)
     func socket(_ socket: SRTSocket<Self>, didAcceptSocket client: SRTSocket<Self>)
 }
 
-final class SRTSocket<T: SRTSocketDelegate> {
+public final class SRTSocket<T: SRTSocketDelegate> {
     var timeout: Int = 0
     var options: [SRTSocketOption: Any] = [:]
     weak var delegate: T?

@@ -104,7 +104,7 @@ public final class SRTConnection: NSObject {
 
 extension SRTConnection: SRTSocketDelegate {
     // MARK: SRTSocketDelegate
-    func socket(_ socket: SRTSocket<SRTConnection>, status: SRT_SOCKSTATUS) {
+    public func socket(_ socket: SRTSocket<SRTConnection>, status: SRT_SOCKSTATUS) {
         switch mode {
         case .caller:
             connected = socket.status == SRTS_CONNECTED
@@ -122,11 +122,11 @@ extension SRTConnection: SRTSocketDelegate {
         }
     }
 
-    func socket(_ socket: SRTSocket<SRTConnection>, incomingDataAvailabled data: Data, bytes: Int32) {
+    public func socket(_ socket: SRTSocket<SRTConnection>, incomingDataAvailabled data: Data, bytes: Int32) {
         streams.first?.doInput(data.subdata(in: 0..<Data.Index(bytes)))
     }
 
-    func socket(_ socket: SRTSocket<SRTConnection>, didAcceptSocket client: SRTSocket<SRTConnection>) {
+    public func socket(_ socket: SRTSocket<SRTConnection>, didAcceptSocket client: SRTSocket<SRTConnection>) {
         // only one client can accept.
         if clients.isEmpty {
             client.delegate = self

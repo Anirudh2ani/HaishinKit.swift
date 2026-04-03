@@ -17,7 +17,7 @@ public final class SRTSocket<T: SRTSocketDelegate> {
     weak var delegate: T?
     private(set) var mode: SRTMode = .caller
     private(set) var perf: CBytePerfMon = .init()
-    private(set) var isRunning: Atomic<Bool> = .init(false)
+    public private(set) var isRunning: Atomic<Bool> = .init(false)
     private(set) var socket: SRTSOCKET = SRT_INVALID_SOCK
     private(set) var status: SRT_SOCKSTATUS = SRTS_INIT {
         didSet {
@@ -209,7 +209,7 @@ public final class SRTSocket<T: SRTSocketDelegate> {
 
 extension SRTSocket: Running {
     // MARK: Running
-    func startRunning() {
+    public func startRunning() {
         guard !isRunning.value else {
             return
         }
@@ -228,7 +228,7 @@ extension SRTSocket: Running {
         }
     }
 
-    func stopRunning() {
+    public func stopRunning() {
         guard isRunning.value else {
             return
         }

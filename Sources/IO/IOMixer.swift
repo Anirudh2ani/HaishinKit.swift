@@ -27,7 +27,7 @@ protocol IOMixerDelegate: AnyObject {
 final class IOMixer {
     static let defaultFrameRate: Float64 = 30
 
-    weak var muxer: (any IOMuxer)?
+    public weak var muxer: (any IOMuxer)?
 
     weak var delegate: (any IOMixerDelegate)?
 
